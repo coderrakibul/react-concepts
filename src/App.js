@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 const number = 5555;
 const singer = { name: "Mahfuz", job: "singer" };
@@ -40,6 +41,7 @@ function App() {
      {
        products.map(product => <Products name={product.name} price={product.price}></Products>)
      }
+     <Counter></Counter>
     </div>
     
   );
@@ -55,7 +57,6 @@ function Person(props) {
 }
 
 function Friend(props) {
-  console.log(props);
   return (
     <div className='container'>
       <h1>Movie: {props.movie}</h1>
@@ -70,6 +71,29 @@ function Products(props) {
     <div>
       <h3>Name: {props.name}</h3>
       <p>Price: {props.price}</p>
+    </div>
+  )
+}
+
+
+// state: ata change hote pare user jodi change kore
+function Counter(){
+  const [count, setCount] = useState(33);
+
+  // shortcut
+  const increaseCount = () => setCount( count + 1);
+  const decreaseCount = () => setCount(count - 1);
+
+  // const increaseCount = () => {
+  //   const newCount = count + 1;
+  //   setCount(newCount);
+  // }
+
+  return (
+    <div class="counter">
+      <h1>Count:{count} </h1>
+      <button onClick={increaseCount}>Increase</button>
+      <button onClick={decreaseCount}>Decrease</button>
     </div>
   )
 }
